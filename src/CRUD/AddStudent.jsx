@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 const AddStudent = () => {
     const[getname,setGetname]=useState([])
+    const[status,setStatus]=useState()
 
     const [inputs,setInputs] = useState({
         name:"",
@@ -43,11 +44,14 @@ async function handleSubmit(e){
               }
         })
         console.log(inputs.name,inputs.age)
+        setStatus(true)
     } catch (error) {
         console.log("Something is wrong")
     }
 }
-
+if(status){
+    return <AddStudent/>
+}
 
   return (
     <Box>
@@ -88,7 +92,7 @@ async function handleSubmit(e){
           <TableCell>{item.id}</TableCell>
           <TableCell>{item.name}</TableCell>
           <TableCell>{item.age}</TableCell>
-           <TableCell><Link to={`/edit/${item.id}`}><Button variant='contained'>Edit</Button></Link><Button variant='contained'>Delete</Button></TableCell>
+           <TableCell><Link to={`/edit/${item.id}`}><Button variant='contained'>Edit</Button></Link><Button variant='contained' onClick={()=>setGetname(()=>{getname.filter(a=>a.id !== item.id)}) }>Delete</Button></TableCell>
           </TableRow>
             ))}
           
