@@ -1,4 +1,7 @@
-# Getting Started with Create React App
+#
+json-server package is used. To start json-server ##json-server --watch db.json 
+Getting Started with Create React App
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
