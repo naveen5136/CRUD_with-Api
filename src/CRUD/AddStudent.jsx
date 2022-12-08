@@ -53,6 +53,13 @@ if(status){
     return <AddStudent/>
 }
 
+const handleDelete = async id =>{
+  await fetch(`http://localhost:3000/student/${id}`,{
+    method:'delete',
+  })
+  setStatus(true)
+}
+
   return (
     <Box>
     <Grid container>
@@ -92,7 +99,7 @@ if(status){
           <TableCell>{item.id}</TableCell>
           <TableCell>{item.name}</TableCell>
           <TableCell>{item.age}</TableCell>
-           <TableCell><Link to={`/edit/${item.id}`}><Button variant='contained'>Edit</Button></Link><Button variant='contained' onClick={()=>setGetname(()=>{getname.filter(a=>a.id !== item.id)}) }>Delete</Button></TableCell>
+           <TableCell><Link to={`/edit/${item.id}`}><Button variant='contained'>Edit</Button></Link><Button variant='contained' onClick={()=>handleDelete(item.id) }>Delete</Button></TableCell>
           </TableRow>
             ))}
           
